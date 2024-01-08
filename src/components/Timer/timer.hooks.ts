@@ -18,7 +18,6 @@ export interface ITimerHook {
 
 export function useTimer({initialSecs, initialMinutes}: ITimerOptions): ITimerHook {
     const [deadlineTs, setDeadlineTs] = useState(0);
-    const [pauseTime, setPauseTime] = useState(0);
     const [lastPauseTs, setLastPauseTs] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
@@ -69,7 +68,6 @@ export function useTimer({initialSecs, initialMinutes}: ITimerOptions): ITimerHo
     const resumeTime = useCallback((newDeadLineTs: number) => {
         // Reseting deadline, with the addition of paused time
         setDeadlineTs(newDeadLineTs)
-        setPauseTime(0);
         setLastPauseTs(0);
         return deadlineTs;
     }, [])
@@ -81,13 +79,12 @@ export function useTimer({initialSecs, initialMinutes}: ITimerOptions): ITimerHo
 
     const setResume = useCallback(() => {
         // Calculating the pause time
-        const updatedPauseTime = pauseTime + (Date.now() - lastPauseTs);
-        console.log("PauseTime", updatedPauseTime)
-        const newTs = deadlineTs + updatedPauseTime;
-        setPauseTime(updatedPauseTime)
+        const pauseTime = Date.now() - lastPauseTs;
+        console.log("PauseTime", pauseTime)
+        const newTs = deadlineTs + pauseTime;
         setIsPause(false);
         resumeTime(newTs)
-    }, [lastPauseTs, pauseTime])
+    }, [lastPauseTs])
 
     const setReset = useCallback(() => {
         setIsPause(false);
