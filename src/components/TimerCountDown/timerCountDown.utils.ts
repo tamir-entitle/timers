@@ -1,0 +1,1 @@
+export const addZeroToTime = (num: number) => num < 10 ? "0" + num : num; 
