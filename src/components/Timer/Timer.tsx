@@ -1,7 +1,7 @@
+import { ITimerOptions } from "../../types/common.types";
+import Actions from "../Actions";
 import useStyles from "./Timer.styles"
 import TimerCountDown from "../TimerCountDown"
-import Actions from "../Actions";
-import { ITimerOptions } from "../../types/common.types";
 import { useTimer } from "./timer.hooks";
 
 export default function Timer(props: ITimerOptions) {
@@ -15,6 +15,3 @@ export default function Timer(props: ITimerOptions) {
             <Actions state={state} actions={actions}/>
     </div>
 }
-
-
-

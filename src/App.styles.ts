@@ -1,13 +1,12 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     appWrapper: {
         color: "black",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        marginTop: "350px"
+        paddingTop: "350px"
     },
-};
-export default createUseStyles(getStyles);
+});

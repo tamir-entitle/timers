@@ -1,8 +1,7 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     button: {
         marginTop: "10px"
     }
-};
-export default createUseStyles(getStyles);
+});

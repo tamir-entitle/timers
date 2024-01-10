@@ -1,5 +1,4 @@
 import constate from "constate";
-// import { useTimer } from "./timer.hooks";
 import { useCallback, useState } from "react";
 import { ITimerOptions } from "../types/common.types";
 
@@ -10,9 +9,9 @@ function useTimers() {
         setTimers(newTimers)
     }, [timers])
 
-    return { 
-        state: { timers }, 
-        actions: { addTimer } 
+    return {
+        state: { timers },
+        actions: { addTimer }
     };
 }
 

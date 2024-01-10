@@ -1,18 +1,17 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     minutesAndSeconds: {
         display: "flex",
         marginLeft: "17px"
     },
     minutes: {
-        width: "95px",
+        minWidth: "95px",
     },
     seconds: {
-        width: "105px",
+        minWidth: "105px",
     },
     milisecs: {
-        width: "120px",
+        minWidth: "120px",
     },
-};
-export default createUseStyles(getStyles);
+});

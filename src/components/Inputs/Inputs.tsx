@@ -1,30 +1,38 @@
 import useStyles from "./Inputs.styles"
-import { ITimerOptions } from "../../types/common.types"
+import { useCreateOnUpdate } from "./inputs.hooks";
+import { IInputs } from "./inputs.types";
 
-interface IInputs {
-    state: ITimerOptions,
-    actions: {
-        setInitialSecs: (seconds: number) => void,
-        setInitialMinutes: (minutes: number) => void,
-    }
+function Inputs({ state, actions }: IInputs) {
+  const classes = useStyles();
+  const onUpdateMinutes = useCreateOnUpdate(actions.setInitialMinutes);
+  const onUpdateSeconds = useCreateOnUpdate(actions.setInitialSecs);
 
+  return (
+    <div className={classes.inputsWrapper}>
+      <label className={classes.label}>
+        <div className={classes.labelText}>Minutes</div>
+        <input className={classes.input}
+          type='number'
+          min={0}
+          max={999}
+          maxLength={3}
+          value={state.initialMinutes}
+          onChange={onUpdateMinutes}
+        />
+      </label>
+      <label className={classes.label}>
+        <div className={classes.labelText}>Seconds</div>
+        <input className={classes.input}
+          type='number'
+          min={0}
+          max={60}
+          maxLength={2}
+          value={state.initialSecs}
+          onChange={onUpdateSeconds}
+        />
+      </label>
+    </div>
+  )
 }
 
-function Inputs({state, actions} : IInputs) {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.inputsWrapper}>
-          <label className={classes.label}>
-            <div className={classes.labelText}>Minutes</div>
-            <input className={classes.input} type='number' value={state.initialMinutes} onChange={e => actions.setInitialMinutes(Number(e.target.value))} />
-          </label>
-          <label className={classes.label}>
-            <div className={classes.labelText}>Seconds</div>
-            <input className={classes.input} type='number' value={state.initialSecs} onChange={e => actions.setInitialSecs(Number(e.target.value))} />
-          </label>
-        </div>
-    )
-  }
-  
-  export default Inputs;
+export default Inputs;
