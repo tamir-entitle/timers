@@ -1,9 +1,9 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     timerAndActionsWrapper: {
-        margin: "10px 0",
         fontFamily: "'Orbitron', sans-serif",
+        marginTop: "20px",
     },
     timerWrapper: {
         fontSize: "55px",
@@ -27,5 +27,4 @@ const getStyles = {
         textAlign: "center",
         marginTop: "10px"
     }
-};
-export default createUseStyles(getStyles);
+});

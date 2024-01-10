@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     inputsWrapper: {
         display: "flex",
         flexDirection: "column",
@@ -10,8 +10,7 @@ const getStyles = {
         width: "300px",
         "& > :first-child": {
             marginTop: "15px"
-          }
-
+        }
     },
     label: {
         margin: "5px 0",
@@ -28,5 +27,4 @@ const getStyles = {
     addTimerBtn: {
         marginTop: "20px"
     },
-};
-export default createUseStyles(getStyles);
+});

@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-const getStyles = {
+export default createUseStyles({
     actions: {
         display: "flex",
         justifyContent: "center",
@@ -8,9 +8,5 @@ const getStyles = {
     },
     pauseBtn: {
         marginRight: "10px"
-    },
-    resetBtn: {
-        // marginRight: "10px"
-    },
-};
-export default createUseStyles(getStyles);
+    }
+});

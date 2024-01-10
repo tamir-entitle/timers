@@ -1,17 +1,20 @@
 import useStyles from "./Actions.styles"
 import { ITimerHook } from "../Timer/timer.hooks";
+import { useCallback } from "react";
 
-export default function Timer(props: ITimerHook) {
+export default function Timer({ state, actions } : ITimerHook) {
     const classes = useStyles();
-    const { state, actions } = props;
+    const {isOver, isPause} = state;
+
+    const onPauseOrResume = useCallback(() => isPause ? actions.setResume() : actions.setPause(), [actions, isPause]) 
+
     return <div className={classes.actions}>
-        <button className={classes.pauseBtn} 
-                onClick={() => state.isPause ? actions.setResume() : actions.setPause()}
-                disabled={state.isOver}
+        {!isOver ? <button className={classes.pauseBtn} 
+                onClick={onPauseOrResume}
         >
-            {state.isPause ? "Resume" : "Pause"}
-        </button>
-        <button className={classes.resetBtn} onClick={() => actions.setReset()}>Reset</button>
+            {isPause ? "Resume" : "Pause"}
+        </button> : null}
+        <button onClick={actions.setReset}>Reset</button>
     </div>
 }
 
